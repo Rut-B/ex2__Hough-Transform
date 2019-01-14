@@ -11,7 +11,7 @@ from canny import *
 img_name ='sudoku-original.jpg'
 im = cv2.imread(img_name, 0)
 img = im.astype('int32')
-threshold_img = (img > 48) * 255
+threshold_img = (img > 45) * 255
 sigma = 0.2
 t = 60
 T = 100
@@ -22,5 +22,6 @@ img3 = suppression(img2, D)
 img4, weak = threshold(img3, t, T)
 img5 = tracking(img4, weak)
 
-plt.imshow(img5, cmap = 'gray')
+plt.imshow(~threshold_img, cmap = 'gray')
+# plt.imshow(img5, cmap = 'gray')
 plt.show()
